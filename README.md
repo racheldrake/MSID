@@ -13,6 +13,9 @@ To process species occurrence across the study region we use occurrence estimate
 ### Macaulay Library Records
 The audio visual index used in this dataset is processed from records from the online Macaulay Library. We publish the final audio visual index used in the analysis but not the raw data associated with Macaulay Library records. This file can be found in folder `AVI` below.
 
+### Species Trait Data
+Species trait data used during the phylogenetic analysis can be found in the publication repository for Schuetz & Johnston (2019).
+
 ## Information about code
 The following is a breakdown of scripts for the analysis. All scripts contain a description of their purpose in the header too.
 
@@ -34,4 +37,6 @@ The following is a breakdown of scripts for the analysis. All scripts contain a 
 | 12 phylogenetic analysis | Regression with respect to phylogenetic distance on species traits for individual models' species results |
 
 ## References
-Cornell Lab of Ornithology. (2025). eBird Basic Dataset (Version EBD_relMar-2025) [Data set]
+Cornell Lab of Ornithology. (2025). eBird Basic Dataset (Version EBD_relMar-2025) [Data set] 
+
+Schuetz, J. G., & Johnston, A. (2019). Characterizing the cultural niches of North American birds. Proceedings of the National Academy of Sciences, 116(22), 10868–10873. https://doi.org/10.1073/pnas.1820670116
