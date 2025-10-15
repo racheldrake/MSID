@@ -2,7 +2,7 @@
 This repository is for the submission of the manuscript titled above. Note that this repository contains **code only** aside from the calculated audio visual index. Information about each related dataset can be found in the manuscript but a short blurb is given below about data access.
 
 ### Merlin Sound Identification Data (MSID)
-MSID data are not freely available and requests to use such data should be directed to the Cornell Lab of Ornithology whom own the dataset.
+MSID data are not freely available and requests to use such data should be directed to the Cornell Lab of Ornithology who own the dataset.
 
 ### eBird Basic Dataset (EBD)
 We analyse the March 2025 release of the EBD (Cornell Lab of Ornithology, 2025). The related sampling file from this dataset is also used to process the number of checklists each observer has recorded prior to the study period start data of March 2023. To access the full eBird Basic Dataset required to run the initital data cleaning script please see here https://ebird.org/data/download.
