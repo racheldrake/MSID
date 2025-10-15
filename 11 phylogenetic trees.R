@@ -118,7 +118,7 @@ p <- p %<+% group_info +
   geom_tippoint(aes(x = x + 1.5,
                     color = index, 
                     fill = index), 
-                size = 0.65) +
+                size = 0.7) +
   scale_color_gradient2("Change in Relative\nReporting Rate",
                         low = "darkblue",   # Low end of the scale
                         mid = "white",       # Midpoint color
@@ -220,7 +220,7 @@ p <- p %<+% group_info +
   geom_tippoint(aes(x = x + 1.5,
                     color = index, 
                     fill = index), 
-                size = 0.65) +
+                size = 0.7) +
   scale_color_gradient2("Change in Relative\nReporting Rate",
                         low = "darkblue",   # Low end of the scale
                         mid = "white",       # Midpoint color
@@ -324,7 +324,7 @@ p <- p %<+% group_info +
   geom_tippoint(aes(x = x + 1.5,
                     color = index, 
                     fill = index), 
-                size = 0.65) +
+                size = 0.7) +
   scale_color_gradient2("Change in Relative\nReporting Rate",
                         low = "darkblue",   # Low end of the scale
                         mid = "white",       # Midpoint color
@@ -429,7 +429,7 @@ p <- p %<+% group_info +
   geom_tippoint(aes(x = x + 1.5,
                     color = index, 
                     fill = index), 
-                size = 0.65) +
+                size = 0.7) +
   scale_color_gradient2("Change in Relative\nReporting Rate",
                         low = "darkblue",   # Low end of the scale
                         mid = "white",       # Midpoint color
@@ -481,6 +481,8 @@ ggsave(paste0(results_path, '/community/phylo_tree_low.png'), p, width = 6, heig
 
 #- Community model max ####
 #- High experience ####
+species <- read_csv(paste0('community_max/prop/prop_species.csv')) %>%
+  distinct(common_name) %>% left_join(taxon, by = 'common_name')
 
 prop_species <- read_csv('community_max/prop/prop_species.csv') %>% 
   left_join(species, by = 'common_name') %>% filter(checklist_label == 'high') %>% select(species = scientific_name, index = new_diff)
@@ -531,10 +533,10 @@ strip_data <- group_info %>% filter(order %in% multi_species$order) %>%
 strip_data$order_factor <- factor(strip_data$order, levels = unique(strip_data$order))
 
 p <- p %<+% group_info + 
-  geom_tippoint(aes(x = x + 1.5,
+  geom_tippoint(aes(x = x + 2,
                     color = index, 
                     fill = index), 
-                size = 0.65) +
+                size = 0.25) +
   scale_color_gradient2("Change in Relative\nReporting Rate",
                         low = "darkblue",   # Low end of the scale
                         mid = "white",       # Midpoint color
@@ -635,10 +637,10 @@ strip_data$order_factor <- factor(strip_data$order, levels = unique(strip_data$o
 
 
 p <- p %<+% group_info + 
-  geom_tippoint(aes(x = x + 1.5,
+  geom_tippoint(aes(x = x + 2,
                     color = index, 
                     fill = index), 
-                size = 0.65) +
+                size = 0.25) +
   scale_color_gradient2("Change in Relative\nReporting Rate",
                         low = "darkblue",   # Low end of the scale
                         mid = "white",       # Midpoint color
@@ -752,7 +754,7 @@ p <- p %<+% group_info +
   geom_tippoint(aes(x = x + 1.5,
                     color = index, 
                     fill = index), 
-                size = 0.65) +
+                size = 0.7) +
   scale_color_viridis_c("Audio Index") +
   scale_fill_viridis_c("Audio Index") +
   theme(
