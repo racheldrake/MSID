@@ -5,16 +5,16 @@ This repository is for the submission of the manuscript titled above. Note that 
 MSID data are not freely available and requests to use such data should be directed to the Cornell Lab of Ornithology who own the dataset.
 
 ### eBird Basic Dataset (EBD)
-We analyse the March 2025 release of the EBD (Cornell Lab of Ornithology, 2025). The related sampling file from this dataset is also used to process the number of checklists each observer has recorded prior to the study period start data of March 2023. To access the full eBird Basic Dataset required to run the initital data cleaning script please see here https://ebird.org/data/download.
+We analyse the March 2025 release of the EBD *(Cornell Lab of Ornithology, 2025)*. The related sampling file from this dataset is also used to process the number of checklists each observer has recorded prior to the study period start data of March 2023. To access the full eBird Basic Dataset required to run the initital data cleaning script please see here https://ebird.org/data/download.
 
 ### eBird Status and Trends
 To process species occurrence across the study region we use occurrence estimates from eBird Status and Trends. These are not available in a data repository as this can be downloaded from inside R with a relevant eBird access token which can be found here https://ebird.org/st/request.
 
 ### Macaulay Library Records
-The audio visual index used in this dataset is processed from records from the online Macaulay Library. We publish the final audio visual index used in the analysis but not the raw data associated with Macaulay Library records. This file can be found in folder `AVI` below.
+The audio visual index used in this dataset is processed from records from the online Macaulay Library. We publish the final audio visual index used in the analysis but not the raw data associated with Macaulay Library records. This file can be found in folder `AVI`.
 
 ### Species Trait Data
-Species trait data used during the phylogenetic analysis can be found in the publication repository for Schuetz & Johnston (2019).
+Species trait data used during the phylogenetic analysis can be found in the publication repository for *Schuetz & Johnston (2019)*.
 
 ## Information about code
 The following is a breakdown of scripts for the analysis. All scripts contain a description of their purpose in the header too.
