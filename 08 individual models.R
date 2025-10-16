@@ -103,14 +103,24 @@ for (target_species in species){
                            family = beta_family(),
                            ziformula = ~ log10(previous_checklists + 1)*MSID_prop*realised_occur)
   
+  high_mean_occur <- mean(species_data$occur[species_data$occur >= quantile(species_data$occur, 0.8)])
+  low_mean_occur <- mean(species_data$occur[species_data$occur <= quantile(species_data$occur, 0.2)])
+  
+  high_mean_realised_occur <- mean(species_data$realised_occur[species_data$realised_occur >= quantile(species_data$realised_occur, 0.8)])
+  low_mean_realised_occur <- mean(species_data$realised_occur[species_data$realised_occur <= quantile(species_data$realised_occur, 0.2)])
+  
+  
   species_pred <- data.frame(MSID_prop = seq(min(model_data$MSID_prop), max(model_data$MSID_prop), 
                                              length.out = 100)) %>%
     mutate(low = quantile(model_data$previous_checklists, 0.1),
            high = quantile(model_data$previous_checklists, 0.9), 
-           observer_id = 'new',
-           occur = mean(species_data$occur),
-           realised_occur = mean(species_data$realised_occur)) %>%
-    pivot_longer(cols = c('low', 'high'), names_to = 'checklist_labels', values_to = 'previous_checklists')
+           observer_id = 'new') %>%
+    pivot_longer(cols = c('low', 'high'), 
+                 names_to = 'checklist_labels', 
+                 values_to = 'previous_checklists') %>%
+    mutate(occur = ifelse(checklist_labels == 'high', high_mean_occur, low_mean_occur),
+           realised_occur = ifelse(checklist_labels == 'high', high_mean_realised_occur, low_mean_realised_occur))
+  
   
   pred <- predict(species_model, newdata = apply_scalers(species_pred, scalers, scale_vars), type = 'response', allow.new.levels = TRUE, se.fit = TRUE)
   
@@ -122,11 +132,13 @@ for (target_species in species){
            high = quantile(model_data$previous_checklists, 0.9),
            min = quantile(model_data$MSID_prop, 0.1),
            max = quantile(model_data$MSID_prop, 0.9),
-           observer_id = 'new',
-           occur = mean(species_data$occur),
-           realised_occur = mean(species_data$realised_occur)) %>%
+           observer_id = 'new') %>%
     pivot_longer(cols = c('low', 'high'), names_to = 'checklist_labels', values_to = 'previous_checklists') %>%
-    pivot_longer(cols = c('min', 'max'), names_to = 'MSID_level', values_to = 'MSID_prop')
+    pivot_longer(cols = c('min', 'max'), 
+                 names_to = 'MSID_level', values_to = 'MSID_prop')  %>%
+    mutate(occur = ifelse(checklist_labels == 'high', high_mean_occur, low_mean_occur),
+           realised_occur = ifelse(checklist_labels == 'high', high_mean_realised_occur, low_mean_realised_occur))
+  
   
   species_index_pred$prediction <- predict(species_model, newdata = apply_scalers(species_index_pred, scalers, scale_vars), type = 'response')
   
@@ -247,3 +259,4 @@ for (target_species in species){
   species_results %>% write_csv(paste0(results_path, 'coef_prop.csv'))
   
 }
+
